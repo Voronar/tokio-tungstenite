@@ -35,7 +35,7 @@ version = "0.16.0"
 default-features = false
 # path = "../tungstenite-rs"
 git = "https://github.com/Voronar/tungstenite-rs"
-branch = "message_raw_frame"
+branch = "master"
 
 [dependencies.native-tls-crate]
 optional = true
