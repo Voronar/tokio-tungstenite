@@ -1,8 +1,14 @@
-# 0.16.0 (Unreleased)
+# 0.16.1
+
+- Fix feature selection problem when using TLS.
+
+# 0.16.0
 
 - Add a function to allow to specify the TLS connector when using `connect()` like logic.
 - Add support for choosing the right root certificates for the TLS.
 - Change the behavior of the `connect()` so that it fails when using TLS without TLS feature.
+- Do not project with Unpin.
+- Update the dependencies with important [implications / improvements](https://github.com/snapview/tungstenite-rs/blob/master/CHANGELOG.md#0160).
 
 # 0.15.0
 

@@ -54,7 +54,7 @@ pub use tls::{client_async_tls, client_async_tls_with_config};
 #[cfg(feature = "connect")]
 pub use connect::{connect_async, connect_async_with_config};
 
-#[cfg(all(any(feature = "native-tls", feature = "rustls-tls"), feature = "connect"))]
+#[cfg(all(any(feature = "native-tls", feature = "__rustls-tls"), feature = "connect"))]
 pub use connect::connect_async_tls_with_config;
 
 #[cfg(feature = "stream")]
@@ -226,7 +226,7 @@ impl<S> WebSocketStream<S> {
     {
         trace!("{}:{} WebSocketStream.with_context", file!(), line!());
         if let Some((kind, ctx)) = ctx {
-            self.inner.get_mut().set_waker(kind, &ctx.waker());
+            self.inner.get_mut().set_waker(kind, ctx.waker());
         }
         f(&mut self.inner)
     }
@@ -236,7 +236,7 @@ impl<S> WebSocketStream<S> {
     where
         S: AsyncRead + AsyncWrite + Unpin,
     {
-        &self.inner.get_ref().get_ref()
+        self.inner.get_ref().get_ref()
     }
 
     /// Returns a mutable reference to the inner stream.
